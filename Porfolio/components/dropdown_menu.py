@@ -3,7 +3,7 @@ import reflex as rx
 from Porfolio.states.dropdown_state import DropdownMenuState
 
 
-def dropdown_menu():
+def dropdown_menu() -> rx.Component:
     return rx.menu.root(
         rx.menu.trigger(
             rx.button(

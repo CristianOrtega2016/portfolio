@@ -1,26 +1,8 @@
 # components/cube_3d_advanced.py
-from __future__ import annotations
-
 import reflex as rx
 from typing import Dict
 from Porfolio.states.cube_3d_advanced_state import Cube3DState
-
-
-def _translate_z(width: int, height: int) -> str:
-    """Calculate the translateZ value dynamically based on cube dimensions.
-
-    The translateZ should be half the smallest dimension (width or height)
-    so all 6 faces form a perfect cube.
-    """
-    z = min(width, height) // 2
-    return f"{z}px"
-
-
-def _perspective(width: int, height: int) -> str:
-    """Calculate a reasonable perspective value based on cube size."""
-    p = max(width, height) * 1.5
-    return f"{p:.0f}px"
-
+# components/cube_3d_advanced.py - Versión simplificada que sí funciona
 
 def cube_3d_advanced(
     faces: Dict[str, rx.Component],
@@ -28,28 +10,15 @@ def cube_3d_advanced(
     height: int = 400,
     auto_rotate: bool = False,
 ) -> rx.Component:
-    """3D interactive cube built with native Reflex components and inline CSS.
-
-    Args:
-        faces: Dictionary mapping face names ('front', 'back', 'left', 'right', 'top', 'bottom')
-               to their corresponding Reflex components.
-        width: Cube width in pixels.
-        height: Cube height in pixels.
-        auto_rotate: Whether the cube should auto-rotate on load.
-
-    Returns:
-        A Reflex component displaying the 3D cube.
-    """
-    tz = _translate_z(width, height)
-    perspective = _perspective(width, height)
-
+    """Cubo 3D usando solo componentes nativos de Reflex con CSS inline"""
+    
+    # Estilos CSS inline usando rx.style
     cube_styles = {
         ".cube-container": {
             "width": f"{width}px",
             "height": f"{height}px",
-            "perspective": perspective,
+            "perspective": f"{width * 1.5}px",
             "margin": "auto",
-            "max_width": "100vw",
         },
         ".cube": {
             "position": "relative",
@@ -83,41 +52,21 @@ def cube_3d_advanced(
         ".spin-animation": {
             "animation": "spin 20s linear infinite",
         },
-        # Responsive: scale down on smaller screens
-        "@media (max-width: 768px)": {
-            ".cube-container": {
-                "width": f"{min(width, 300)}px",
-                "height": f"{min(height, 300)}px",
-                "perspective": "450px",
-            },
-            ".cube-face": {
-                "padding": "10px",
-                "font_size": "0.85em",
-            },
-        },
-        "@media (max-width: 480px)": {
-            ".cube-container": {
-                "width": f"{min(width, 260)}px",
-                "height": f"{min(height, 260)}px",
-                "perspective": "390px",
-            },
-            ".cube-face": {
-                "padding": "6px",
-                "font_size": "0.75em",
-            },
-        },
     }
-
+    
     transform_value = f"rotateX({Cube3DState.rotate_x}deg) rotateY({Cube3DState.rotate_y}deg)"
-
+    
     cube_class = "cube"
     if auto_rotate:
         cube_class += " spin-animation"
-
+    
     return rx.box(
+        # Inyectar estilos CSS
         rx.style(cube_styles),
-
+        
+        # Contenedor del cubo
         rx.box(
+            # Cara frontal
             rx.box(
                 faces.get('front', rx.card(
                     rx.vstack(
@@ -128,9 +77,10 @@ def cube_3d_advanced(
                     height="100%",
                 )),
                 class_name="cube-face",
-                style={"transform": f"translateZ({tz})", "bg": "rgba(59, 130, 246, 0.9)"},
+                style={"transform": "translateZ(200px)", "bg": "rgba(59, 130, 246, 0.9)"},
             ),
-
+            
+            # Cara trasera
             rx.box(
                 faces.get('back', rx.card(
                     rx.vstack(
@@ -141,9 +91,10 @@ def cube_3d_advanced(
                     height="100%",
                 )),
                 class_name="cube-face",
-                style={"transform": f"rotateY(180deg) translateZ({tz})", "bg": "rgba(236, 72, 153, 0.9)"},
+                style={"transform": "rotateY(180deg) translateZ(200px)", "bg": "rgba(236, 72, 153, 0.9)"},
             ),
-
+            
+            # Cara derecha
             rx.box(
                 faces.get('right', rx.card(
                     rx.vstack(
@@ -154,9 +105,10 @@ def cube_3d_advanced(
                     height="100%",
                 )),
                 class_name="cube-face",
-                style={"transform": f"rotateY(90deg) translateZ({tz})", "bg": "rgba(16, 185, 129, 0.9)"},
+                style={"transform": "rotateY(90deg) translateZ(200px)", "bg": "rgba(16, 185, 129, 0.9)"},
             ),
-
+            
+            # Cara izquierda
             rx.box(
                 faces.get('left', rx.card(
                     rx.vstack(
@@ -167,9 +119,10 @@ def cube_3d_advanced(
                     height="100%",
                 )),
                 class_name="cube-face",
-                style={"transform": f"rotateY(-90deg) translateZ({tz})", "bg": "rgba(245, 158, 11, 0.9)"},
+                style={"transform": "rotateY(-90deg) translateZ(200px)", "bg": "rgba(245, 158, 11, 0.9)"},
             ),
-
+            
+            # Cara superior
             rx.box(
                 faces.get('top', rx.card(
                     rx.vstack(
@@ -180,9 +133,10 @@ def cube_3d_advanced(
                     height="100%",
                 )),
                 class_name="cube-face",
-                style={"transform": f"rotateX(90deg) translateZ({tz})", "bg": "rgba(139, 92, 246, 0.9)"},
+                style={"transform": "rotateX(90deg) translateZ(200px)", "bg": "rgba(139, 92, 246, 0.9)"},
             ),
-
+            
+            # Cara inferior
             rx.box(
                 faces.get('bottom', rx.card(
                     rx.vstack(
@@ -193,9 +147,9 @@ def cube_3d_advanced(
                     height="100%",
                 )),
                 class_name="cube-face",
-                style={"transform": f"rotateX(-90deg) translateZ({tz})", "bg": "rgba(239, 68, 68, 0.9)"},
+                style={"transform": "rotateX(-90deg) translateZ(200px)", "bg": "rgba(239, 68, 68, 0.9)"},
             ),
-
+            
             class_name=cube_class,
             style={"transform": transform_value},
             on_mouse_down=lambda e: Cube3DState.start_drag(e.client_x, e.client_y),
