@@ -4,3 +4,5 @@ assets/external/
 *.db
 .web
 .states
+frontend.zip
+porfolio.egg-info/

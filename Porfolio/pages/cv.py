@@ -13,8 +13,8 @@ def cv() -> rx.Component:
     """Render the CV / resume page."""
     return rx.container(
         rx.vstack(
-            rx.link("← Volver al portfolio", href="/"),
-            rx.heading("Curriculum Vitae", size="8"),
+            rx.link("← back to home", href="/"),
+            rx.heading("Resume", size="8"),
             rx.divider(),
             # Personal info
             _section_header("Datos Personales"),

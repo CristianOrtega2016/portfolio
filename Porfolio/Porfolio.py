@@ -10,5 +10,5 @@ app = rx.App(
     }
 )
 
-app.add_page(home, route="/", title="Portfolio 3D")
-app.add_page(cv, route="/cv", title="CV - Portfolio 3D")
+app.add_page(home, route="/", title="Portfolio")
+app.add_page(cv, route="/cv", title="About me - Portfolio")
