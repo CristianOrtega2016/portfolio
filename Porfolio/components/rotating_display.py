@@ -28,18 +28,17 @@ class RotatingDisplayState(rx.State):
 
     @rx.event(background=True)
     async def run_loop(self):
-        """Background loop that auto-advances every 4 seconds."""
+        """Background loop that auto-advances every 3 seconds."""
         while True:
-            await asyncio.sleep(4.0)
+            await asyncio.sleep(3.0)
             async with self:
-                self.current_index = (self.current_index + 1) % self.total_cards
+                self.next_card()
 
 
 def rotating_display(
     cards: List[rx.Component],
     labels: List[str],
     auto_rotate: bool = True,
-    interval_ms: int = 4000,
     card_width: str = "500px",
     card_height: str = "400px",
 ) -> rx.Component:
@@ -52,7 +51,6 @@ def rotating_display(
         cards: List of card components.
         labels: Short labels for each card.
         auto_rotate: Enable auto-sliding.
-        interval_ms: Milliseconds between auto-advance.
         card_width: Width of the visible card area.
         card_height: Height of the visible card area.
 
@@ -64,7 +62,6 @@ def rotating_display(
         return rx.box(rx.text("No content"), padding="20px")
 
     # Responsive sizes
-    
     tablet_w = "min(420px, 90vw)"
     mobile_w = "min(320px, 95vw)"
     tablet_h = "min(360px, 70vh)"
@@ -103,7 +100,19 @@ def rotating_display(
             )
         )
 
-    # Active card label via nested cond
+    # Build a reactive transform expression using rx.cond chain
+    def _build_transform_cond(idx: int) -> str | rx.Var:
+        """Recursively build rx.cond chain for translateX."""
+        offset = -idx * 100
+        if idx == total - 1:
+            return f"translateX({offset}%)"
+        return rx.cond(
+            RotatingDisplayState.current_index == idx,
+            f"translateX({offset}%)",
+            _build_transform_cond(idx + 1),
+        )
+
+    # Build a reactive label expression using rx.cond chain
     def _label_at(idx: int):
         if idx == total - 1:
             return labels[idx]
@@ -113,10 +122,6 @@ def rotating_display(
             _label_at(idx + 1),
         )
 
-    # Dynamic slide offset: translateX(-N * 100%) where N = current_index
-    slide_offset = RotatingDisplayState.current_index * -100
-    slide_transform = f"translateX({slide_offset}%)"
-
     return rx.box(
         # Start auto-slide on mount
         rx.box(
@@ -124,15 +129,16 @@ def rotating_display(
             display="none",
         ),
 
-        # Viewport (overflow hidden) — sizes via outer container
+        # Viewport + track container
         rx.box(
             # Track (all cards in a row, translated)
             rx.hstack(
                 *track_cards,
                 spacing="0",
                 flex_wrap="nowrap",
-                transition="transform 0.45s cubic-bezier(0.4, 0, 0.2, 1)",
-                transform=slide_transform,
+                # Smooth sliding transition
+                transition="transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+                transform=_build_transform_cond(0),
             ),
             width="100%",
             height="100%",

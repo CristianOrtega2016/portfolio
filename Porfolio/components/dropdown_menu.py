@@ -18,11 +18,11 @@ def dropdown_menu() -> rx.Component:
             )
         ),
         rx.menu.content(
-            rx.menu.item("About me"),
+            rx.menu.item("About me", on_click=lambda: rx.redirect("/about")),
             rx.menu.separator(),
-            rx.menu.item("Diploms"),
+            rx.menu.item("Diploms", on_click=lambda: rx.redirect("/diploms")),
             rx.menu.separator(),
-            rx.menu.item("Projects"),
+            rx.menu.item("Projects", on_click=lambda: rx.redirect("/projects")),
             variant="solid",
             size="2",
             justify="center",

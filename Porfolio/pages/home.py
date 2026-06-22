@@ -190,7 +190,6 @@ def home() -> rx.Component:
                 cards=_cards,
                 labels=_labels,
                 auto_rotate=True,
-                interval_ms=4000,
                 card_width="900px",
                 card_height="700px",
             ),
@@ -220,9 +219,6 @@ def home() -> rx.Component:
             flex_grow="1",
             flex_skrink="0",
             gap="1em",
-            
-            
-            
             
         ),
         
