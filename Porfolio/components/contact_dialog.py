@@ -67,15 +67,15 @@ def contact_dialog() -> rx.Component:
                         ),
                     ),
                     
-                    width="40vw",
-                    height="50vh",
+                    width=["90vw", "70vw", "40vw"],
+                    height=["60vh", "55vh", "50vh"],
                     bg=rx.color("blue", 3),
                 ),
                 #rx.dialog.close(
                 #    rx.button("Close", on_click=ContactCardState.toggle),
                 #    padding="15px",
                 #),
-                height="65vh",
+                height=["75vh", "70vh", "65vh"],
                 
             ),
             open=True,
