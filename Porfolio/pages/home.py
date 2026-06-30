@@ -184,7 +184,7 @@ def navbar_home() -> rx.Component:
                         width="3em",               # Tamaño en píxeles
                         color="white"          # Color adaptable con CSS
                     ),
-                    rx.heading("Diploms", size="7", weight="bold", color="white",),
+                    rx.heading("My Portfolio", size="7", weight="bold", color="white",),
                     align_items="center",
                 ),
                 rx.menu.root(
@@ -296,7 +296,7 @@ def home() -> rx.Component:
                         auto_rotate=True,
                         card_width="900px",
                         card_height="700px",
-                    ),                  
+                    ),
                     align_items="center",
                     justify="center",
                     height="100%",
