@@ -1,21 +1,7 @@
 import reflex as rx
 from Porfolio.components.diploms_grid import diploms_grid
-
-def navbar_icons_item(text: str, icon: str, url: str) -> rx.Component:
-    return rx.link(
-        rx.hstack(rx.icon(icon), rx.text(text, size="4", weight="medium")),
-        color="yellow",
-        href=url,
-    )
-
-
-def navbar_icons_menu_item(text: str, icon: str, url: str) -> rx.Component:
-    return rx.link(
-        rx.hstack(
-            rx.icon(icon, size=16), rx.text(text, size="3", weight="medium")
-        ),
-        href=url,
-    )
+from Porfolio.components.contact_dialog import contact_dialog, contact_nav_button
+from Porfolio.components.navbar import navbar_icons_item, navbar_icons_menu_item
 
 
 def navbar_diploms() -> rx.Component:
@@ -24,23 +10,24 @@ def navbar_diploms() -> rx.Component:
             rx.hstack(
                 rx.hstack(
                     rx.icon(
-                        tag="graduation-cap", # Muestra un birrete/diploma estilizado
+                        tag="binoculars", # Muestra un birrete/diploma estilizado
                         width="3em",               # Tamaño en píxeles
-                        color="yellow"          # Color adaptable con CSS
+                        color="white"          # Color adaptable con CSS
                     ),
                     rx.icon(
-                        tag="award", # Muestra un birrete/diploma estilizado
+                        tag="square-user-round", # Muestra un birrete/diploma estilizado
                         width="3em",               # Tamaño en píxeles
-                        color="yellow"          # Color adaptable con CSS
+                        color="white"          # Color adaptable con CSS
                     ),
-                    rx.heading("Diploms", size="7", weight="bold", color="yellow",),
+                    rx.heading("Diploms", size="7", weight="bold", color="white",),
                     align_items="center",
                 ),
                 rx.hstack(
                     navbar_icons_item("Home", "home", "/#"),
-                    navbar_icons_item("Projects", "coins", "/#"),
-                    navbar_icons_item("Contact", "mail", "/#"),
-                    navbar_icons_item("Curriculum", "layers", "/cv"),
+                    navbar_icons_item("Projects", "folders", "/projects"),
+                    navbar_icons_item("About me", "user-round", "/about"),                    
+                    navbar_icons_item("Curriculum", "book-text", "/cv"),
+                    contact_nav_button(),
                     spacing="6",
                 ),
                 justify="between",
@@ -50,28 +37,27 @@ def navbar_diploms() -> rx.Component:
         rx.mobile_and_tablet(
             rx.hstack(
                 rx.hstack(
-                   
-                    rx.image(
-                        src="https://web.reflex-assets.dev/other/logo.jpg",
-                        width="2em",
-                        height="auto",
-                        border_radius="25%",
+                    rx.icon(
+                        tag="binoculars", # Muestra un birrete/diploma estilizado
+                        width="3em",               # Tamaño en píxeles
+                        color="white"          # Color adaptable con CSS
                     ),
                     rx.icon(
-                        tag="award", # Muestra un birrete/diploma estilizado
-                        size=32,               # Tamaño en píxeles
-                        color="blue"          # Color adaptable con CSS
+                        tag="square-user-round", # Muestra un birrete/diploma estilizado
+                        width="3em",               # Tamaño en píxeles
+                        color="white"          # Color adaptable con CSS
                     ),
-                    rx.heading("Diploms", size="6", weight="bold"),
+                    rx.heading("Diploms", size="7", weight="bold", color="white",),
                     align_items="center",
                 ),
                 rx.menu.root(
                     rx.menu.trigger(rx.icon("menu", size=30)),
                     rx.menu.content(
                         navbar_icons_menu_item("Home", "home", "/#"),
-                        navbar_icons_menu_item("Projects", "coins", "/#"),
-                        navbar_icons_menu_item("Contact", "mail", "/#"),
+                        navbar_icons_menu_item("Projects", "coins", "/#"),  
+                        navbar_icons_menu_item("About me", "user-round", "/about"),                      
                         navbar_icons_menu_item("Curriculum", "layers", "/#"),
+                        contact_nav_button(size="3"),
                     ),
                     justify="end",
                 ),
@@ -90,4 +76,5 @@ def diploms() -> rx.Component:
     return rx.box(
         navbar_diploms(),
         diploms_grid(),
+        contact_dialog(),
     )

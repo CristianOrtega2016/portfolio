@@ -1,20 +1,6 @@
 import reflex as rx
-
-def navbar_icons_item(text: str, icon: str, url: str) -> rx.Component:
-    return rx.link(
-        rx.hstack(rx.icon(icon), rx.text(text, size="4", weight="medium")),
-        href=url,
-    )
-
-
-def navbar_icons_menu_item(text: str, icon: str, url: str) -> rx.Component:
-    return rx.link(
-        rx.hstack(
-            rx.icon(icon, size=16), rx.text(text, size="3", weight="medium")
-        ),
-        href=url,
-    )
-
+from Porfolio.components.contact_dialog import contact_dialog, contact_nav_button
+from Porfolio.components.navbar import navbar_icons_item, navbar_icons_menu_item
 
 def navbar_icons() -> rx.Component:
     return rx.box(
@@ -32,9 +18,10 @@ def navbar_icons() -> rx.Component:
                 ),
                 rx.hstack(
                     navbar_icons_item("Home", "home", "/#"),
-                    navbar_icons_item("Pricing", "coins", "/#"),
-                    navbar_icons_item("Contact", "mail", "/#"),
-                    navbar_icons_item("Services", "layers", "/#"),
+                    navbar_icons_item("Projects", "folders", "/projects"),                    
+                    navbar_icons_item("Diploms", "file-stack", "/diploms"),
+                    navbar_icons_menu_item("Curriculum", "book-text", "/cv"),
+                    contact_nav_button(),
                     spacing="6",
                 ),
                 justify="between",
@@ -57,9 +44,10 @@ def navbar_icons() -> rx.Component:
                     rx.menu.trigger(rx.icon("menu", size=30)),
                     rx.menu.content(
                         navbar_icons_menu_item("Home", "home", "/#"),
-                        navbar_icons_menu_item("Pricing", "coins", "/#"),
-                        navbar_icons_menu_item("Contact", "mail", "/#"),
-                        navbar_icons_menu_item("Services", "layers", "/#"),
+                        navbar_icons_menu_item("Projects", "folders", "/projects"),
+                        navbar_icons_menu_item("Diploms", "file-stack", "/diploms"),
+                        navbar_icons_menu_item("Curriculum", "book-text", "/cv"),
+                        contact_nav_button(size="3"),
                     ),
                     justify="end",
                 ),
@@ -67,7 +55,7 @@ def navbar_icons() -> rx.Component:
                 align_items="center",
             ),
         ),
-        bg=rx.color("blue", 5),
+        bg=rx.color("iris", 3),
         padding="1em",
         # position="fixed",
         # top="0px",
@@ -124,7 +112,7 @@ def body_item() -> rx.Component:
                 width="33%",
                 border_radius="3px", 
                 border="solid",
-                border_color="indigo",
+                border_color="cyan",
             ),
                 rx.box(
                     rx.text(
@@ -153,12 +141,12 @@ def body_item() -> rx.Component:
                     ),
                     padding="2em",
                     spacing="5",
-                    align_items="stretch",
+                    align_items="center",
                     width="33%",
                     border="solid",
                     border_radius="3px",
                     height="auto",
-                    border_color="indigo",
+                    border_color="cyan",
                 ),
       
             ),
@@ -241,6 +229,7 @@ def about() -> rx.Component:
     return rx.vstack(
                 navbar_icons(),
                 body_item(),
-                bg=rx.color("cyan", 7), 
+                contact_dialog(),
+                bg=rx.color("iris", 3),
     )
 

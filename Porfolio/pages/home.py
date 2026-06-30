@@ -5,6 +5,9 @@ from __future__ import annotations
 import reflex as rx
 from Porfolio.components.dropdown_menu import dropdown_menu
 from Porfolio.components.rotating_display import rotating_display
+from Porfolio.components.navbar import navbar_icons_item, navbar_icons_menu_item
+from Porfolio.components.contact_dialog import contact_nav_button, contact_dialog
+from Porfolio.states.contact_card_state import ContactCardState
 
 
 def _cv_card() -> rx.Component:
@@ -142,23 +145,76 @@ CARDS = {
 _cards  = [item["component"]() for item in CARDS.values()]
 _labels = [item["label"] for item in CARDS.values()]
 
+def navbar_home() -> rx.Component:
+    return rx.box(
+        rx.desktop_only(
+            rx.hstack(
+                rx.hstack(
+                    rx.icon(
+                        tag="briefcase-business", # Muestra un birrete/diploma estilizado
+                        width="3em",               # Tamaño en píxeles
+                        color="white"          # Color adaptable con CSS
+                    ),
+                    rx.heading("My Portfolio", size="7", weight="bold", color="white",),
+                    align_items="center",
+                ),
+                rx.hstack(
+                    navbar_icons_item("Diploms", "file-stack", "/diploms"),
+                    navbar_icons_item("Projects", "folders", "/projects"),
+                    navbar_icons_item("About me", "user-round", "/about"),                    
+                    navbar_icons_item("Curriculum", "book-text", "/cv"),
+                    contact_nav_button(),
+                    spacing="6",
+                ),
+                justify="between",
+                align_items="center",
+            ),
+        ),
+        rx.mobile_and_tablet(
+            rx.hstack(
+                rx.hstack(
+                    rx.icon(
+                        tag="binoculars", # Muestra un birrete/diploma estilizado
+                        width="3em",               # Tamaño en píxeles
+                        color="white"          # Color adaptable con CSS
+                    ),
+                    rx.icon(
+                        tag="square-user-round", # Muestra un birrete/diploma estilizado
+                        width="3em",               # Tamaño en píxeles
+                        color="white"          # Color adaptable con CSS
+                    ),
+                    rx.heading("Diploms", size="7", weight="bold", color="white",),
+                    align_items="center",
+                ),
+                rx.menu.root(
+                    rx.menu.trigger(rx.icon("menu", size=30)),
+                    rx.menu.content(
+                        navbar_icons_menu_item("Diploms", "file-stack", "/diploms"),
+                        navbar_icons_menu_item("Projects", "folder", "/projects"),  
+                        navbar_icons_menu_item("About me", "user-round", "/about"),                      
+                        navbar_icons_menu_item("Curriculum", "book-text", "/CV"),
+                        contact_nav_button(size="3"),
+                    ),
+                    justify="end",
+                ),
+                justify="between",
+                align_items="center",
+            ),
+        ),
+        bg=rx.color("iris", 3),
+        padding="1em",
+        # position="fixed",
+        # top="0px",
+        # z_index="5",
+        width="100%",
+    )
+
 
 def home() -> rx.Component:
     """Render the home page with header, auto-rotating cards, and footer."""
     return rx.vstack(
         # ── Header ──
-        rx.flex(
-            rx.color_mode.button(size="3"),
-            rx.spacer(),
-            rx.heading("Mi Portfolio", size="8"),
-            rx.spacer(),
-            dropdown_menu(),
-            width="100%",
-            max_width="1200px",
-            padding="1em",
-            align="center",
-    
-        ),
+        navbar_home(),
         rx.divider(width="100%"),
         # ── Body: rotating display centered ──
         rx.flex(
@@ -221,13 +277,20 @@ def home() -> rx.Component:
             gap="1em",
             
         ),
+        contact_dialog(),
         
         rx.divider(width="100%"),
         # ── Footer ──
         rx.hstack(
-            rx.text("© 2026 — Cristian Ortega", font_size="sm", color="gray"),
+            rx.text("© 2026 — Cristian Ortega", font_size="sm", color="cyan"),
             rx.spacer(),
-            rx.link(rx.badge("LinkedIn", color_scheme="cyan"), href="https://www.linkedin.com/in/cristian-ortega-aab1523b5/", is_external=True, font_size="sm"),
+            rx.link(
+                rx.badge("LinkedIn", size="3", color_scheme="cyan"),
+                href="https://www.linkedin.com/in/cristian-ortega-aab1523b5/", 
+                is_external=True, 
+                #font_size="sm"
+                width="3em"
+            ),
             width="100%",
             max_width="1200px",
             padding="1em",
@@ -236,4 +299,6 @@ def home() -> rx.Component:
         min_height="100vh",
         width="100%",
         spacing="0",
+        bg=rx.color("iris", 3),
+        
     )

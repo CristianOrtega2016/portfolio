@@ -13,7 +13,7 @@ def projects_card(name_png: str, source_url: str) -> rx.Component:
                     ),
                     rx.box(
                         rx.heading(name_png.removesuffix(".png")),
-                        rx.text("Click the image to zoom"),
+                        rx.text("Click to see it"),
                     ),
                     spacing="2",
                     direction="column",
@@ -27,7 +27,7 @@ def projects_card(name_png: str, source_url: str) -> rx.Component:
             border_color="cyan",
             border_radius="1rem",
             _hover={
-                "background": "linear-gradient(45deg, var(--yellow-3), var(--plum-6))",
+                "background": "linear-gradient(45deg, var(--yellow-1), var(--plum-3))",
                 },
         ),
         href=source_url,
