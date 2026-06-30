@@ -218,27 +218,33 @@ def home() -> rx.Component:
                 rx.flex(
                     rx.box(
                         rx.scroll_area(
-                            rx.heading("Presentation", size="5"),
-                            rx.image(src="/profile/profilbild.JPG", width="80px", border_radius= "20%"),
-                            rx.text(
-                                "Hello, my name is Cristian Ortega! I am a Certified Public Accountant and Auditor from Chile, and some time ago I had the opportunity to work as a Credit Card Analyst at Citibank. In this role, I was responsible for monitoring eight bridge accounts where credits issued to customers due to transaction disputes were recorded. These included duplicate payments, services not received, fraud cases, stolen cards, among others. My responsibility was to ensure that each customer case was resolved within a maximum period of three months, including the corresponding accounting process.",
-                                margin_top="0.5em",
-                                font_size="sm",
-                            ),
+                            rx.flex(
+                                rx.heading("Presentation", size="5"),
+                                rx.image(src="/profile/profilbild.JPG", width="80px", border_radius= "20%"),
+                                rx.text(
+                                    "Hello, my name is Cristian Ortega! I am a Certified Public Accountant and Auditor from Chile, and some time ago I had the opportunity to work as a Credit Card Analyst at Citibank. In this role, I was responsible for monitoring eight bridge accounts where credits issued to customers due to transaction disputes were recorded. These included duplicate payments, services not received, fraud cases, stolen cards, among others. My responsibility was to ensure that each customer case was resolved within a maximum period of three months, including the corresponding accounting process.",
+                                    margin_top="0.5em",
+                                    font_size="sm",
+                                ),
+                                height="100%",
+                                padding="1em",
+                                justify="center",
+                                align="center",                                
+                                border_color="white",
+                                flex_grow="1",
+                            ),                            
+                            type="auto",
+                            scrollbars="vertical",
+
                         ),
                         background="linear-gradient(45deg, var(--green-9), var(--plum-9))",
                         width="25%",
                         max_width="350px",
                         min_width="200px",
                         max_height="450px",
-                        height="100%",
-                        padding="1em",
-                        justify="center",
-                        align="center",
-                        direction="column",
                         border="solid",
                         border_color="white",
-                        flex_grow="1",
+                        
                     ),
                     rotating_display(
                         cards=_cards,
@@ -254,6 +260,8 @@ def home() -> rx.Component:
                                 margin_top="0.5em",
                                 font_size="sm",
                             ),
+                            type="auto",
+                            scrollbars="vertical",
                         ),
                         background="linear-gradient(45deg, var(--blue-9), var(--plum-9))",
                         width="25%",
@@ -284,7 +292,7 @@ def home() -> rx.Component:
         rx.mobile_and_tablet(
             rx.box(
                 rx.vstack(                    
-                    rx.box(
+                    rx.box(                        
                         rx.heading("Presentation", size="5"),
                         rx.image(src="/profile/profilbild.JPG", width="80px", border_radius= "20%"),
                         rx.text(
@@ -292,10 +300,12 @@ def home() -> rx.Component:
                             margin_top="0.5em",
                             font_size="sm",
                         ),
+                        direction="column",
+                        spacing="4",
                         background="linear-gradient(45deg, var(--green-9), var(--plum-9))",
                         width="100%",
                         padding="0.8em",
-                        border_radius="8px",
+                        border_radius="8px",                                 
                     ),
                     rotating_display(
                         cards=_cards,
