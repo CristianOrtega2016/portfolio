@@ -7,22 +7,25 @@ def diploms_card(name_png: str, pdf_url: str) -> rx.Component:
                 rx.flex(
                     rx.image(
                         src=f"/diploms_pictures/{name_png}",
-                        width="20rem",
-                        height="10rem",
+                        width="100%",
+                        height="auto",
+                        max_height="8rem",
+                        object_fit="contain",
                         border_radius="1rem",
                     ),
                     rx.box(
-                        rx.heading(name_png.removesuffix(".png")),
+                        rx.heading(name_png.removesuffix(".png"), size="4"),
                         rx.text("Click the image to zoom"),
                     ),
                     spacing="2",
                     direction="column",
                     align="center",
+                    width="100%",
                 ),
             ),
             as_child=True,
-            width="30vw",
-            height="40vh",
+            width="100%",
+            height=["40vh", "35vh", "30vh"],
             border="solid",
             border_color="cyan",
             border_radius="1rem",
@@ -47,20 +50,18 @@ def diploms_grid() -> rx.Component:
 
     return rx.grid(
         *diploms,
-        columns="3",
+        columns=["3", "2", "1"],
         flow="row-dense",
         justify="between",
         spacing_x="9",
         spacing_y="9",
         width="100%",
+        max_width="100%",
         border="solid",
         border_color="white",
         border_radius="0.5rem", bg=rx.color("iris", 3),
         padding="1em",
-        # position="fixed",
-        # top="0px",
-        # z_index="5",
-        
+        overflow="hidden",
     )
 
 

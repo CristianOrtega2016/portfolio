@@ -65,55 +65,50 @@ def navbar_icons() -> rx.Component:
     )
 def body_item() -> rx.Component:
     return rx.box(
+        # ── Desktop: side-by-side columns ──
         rx.desktop_only(
             rx.hstack(
-               rx.box(
-                rx.text(
-                    """
-                    I am a highly motivated individual with a strong passion for programming and web development.
-                    Over the past years, I have intentionally focused my learning path toward Web3 technologies,
-                    driven by my interest in decentralized systems and their real-world impact.
-                    """
+                rx.box(
+                    rx.text(
+                        """
+                        I am a highly motivated individual with a strong passion for programming and web development.
+                        Over the past years, I have intentionally focused my learning path toward Web3 technologies,
+                        driven by my interest in decentralized systems and their real-world impact.
+                        """
+                    ),
+                    rx.text(
+                        """
+                        To build a solid foundation, I enrolled in a MOOC program at the University of Nicosia,
+                        where I am currently completing my certification in blockchain-related studies.
+                        In parallel, I have been self-studying Solidity and Artificial Intelligence.
+                        """
+                    ),
+                    rx.text(
+                        """
+                        My main focus in Web3 is Solidity development, with the goal of becoming a professional
+                        Web3 developer specialized in smart contracts and decentralized applications (DApps).
+                        """
+                    ),
+                    rx.text(
+                        """
+                        In addition to blockchain, I am actively exploring Artificial Intelligence,
+                        particularly its integration into applications and workflows.
+                        """
+                    ),
+                    rx.text(
+                        """
+                        Beyond technology, I bring a strong professional background in finance,
+                        administration, accounting, and financial analysis.
+                        """
+                    ),
+                    padding="1.5em",
+                    spacing="4",
+                    align_items="start",
+                    width="50%",
+                    border_radius="3px",
+                    border="solid",
+                    border_color="cyan",
                 ),
-
-                rx.text(
-                    """
-                    To build a solid foundation, I enrolled in a MOOC program at the University of Nicosia,
-                    where I am currently completing my certification in blockchain-related studies.
-                    In parallel, I have been self-studying Solidity and Artificial Intelligence.
-                    """
-                ),
-
-                rx.text(
-                    """
-                    My main focus in Web3 is Solidity development, with the goal of becoming a professional
-                    Web3 developer specialized in smart contracts and decentralized applications (DApps).
-                    """
-                ),
-
-                rx.text(
-                    """
-                    In addition to blockchain, I am actively exploring Artificial Intelligence,
-                    particularly its integration into applications and workflows.
-                    """
-                ),
-
-                rx.text(
-                    """
-                    Beyond technology, I bring a strong professional background in finance,
-                    administration, accounting, and financial analysis.
-                    """
-                ),
-
-                
-                padding="2em",
-                spacing="5",
-                align_items="start",
-                width="33%",
-                border_radius="3px", 
-                border="solid",
-                border_color="cyan",
-            ),
                 rx.box(
                     rx.text(
                         """
@@ -121,7 +116,6 @@ def body_item() -> rx.Component:
                         my technical skills, financial knowledge, and passion for decentralized technologies.
                         """
                     ),
-
                     rx.text(
                         """
                         Thank you for your time and consideration.
@@ -129,101 +123,97 @@ def body_item() -> rx.Component:
                         can add value to your organization.
                         """
                     ),
-
                     rx.text(
                         "Kind regards,",
                         font_weight="bold",
                     ),
-
                     rx.text(
                         "Cristian Ortega",
                         font_weight="bold",
                     ),
-                    padding="2em",
-                    spacing="5",
+                    padding="1.5em",
+                    spacing="4",
                     align_items="center",
-                    width="33%",
+                    width="50%",
                     border="solid",
                     border_radius="3px",
                     height="auto",
                     border_color="cyan",
                 ),
-      
+                justify="center",
+                width="100%",
             ),
-               
         ),
-
+        # ── Mobile/Tablet: single column with scroll ──
         rx.mobile_and_tablet(
             rx.box(
-                rx.text(
-                    """
-                    I am a highly motivated individual with a strong passion for programming and web development.
-                    Over the past years, I have intentionally focused my learning path toward Web3 technologies,
-                    driven by my interest in decentralized systems and their real-world impact.
-                    """
-                    
+                rx.vstack(
+                    rx.text(
+                        """
+                        I am a highly motivated individual with a strong passion for programming and web development.
+                        Over the past years, I have intentionally focused my learning path toward Web3 technologies,
+                        driven by my interest in decentralized systems and their real-world impact.
+                        """
+                    ),
+                    rx.text(
+                        """
+                        To build a solid foundation, I enrolled in a MOOC program at the University of Nicosia,
+                        where I am currently completing my certification in blockchain-related studies.
+                        In parallel, I have been self-studying Solidity and Artificial Intelligence.
+                        """
+                    ),
+                    rx.text(
+                        """
+                        My main focus in Web3 is Solidity development, with the goal of becoming a professional
+                        Web3 developer specialized in smart contracts and decentralized applications (DApps).
+                        """
+                    ),
+                    rx.text(
+                        """
+                        In addition to blockchain, I am actively exploring Artificial Intelligence,
+                        particularly its integration into applications and workflows.
+                        """
+                    ),
+                    rx.text(
+                        """
+                        Beyond technology, I bring a strong professional background in finance,
+                        administration, accounting, and financial analysis.
+                        """
+                    ),
+                    rx.text(
+                        """
+                        Today, I am actively seeking opportunities in the Web3 space, where I can combine
+                        my technical skills, financial knowledge, and passion for decentralized technologies.
+                        """
+                    ),
+                    rx.text(
+                        """
+                        Thank you for your time and consideration.
+                        I would welcome the opportunity to further discuss how my background and motivation
+                        can add value to your organization.
+                        """
+                    ),
+                    rx.text(
+                        "Kind regards,",
+                        font_weight="bold",
+                    ),
+                    rx.text(
+                        "Cristian Ortega",
+                        font_weight="bold",
+                    ),
+                    spacing="4",
+                    align_items="start",
+                    width="100%",
+                    padding="0.5em",
                 ),
-
-                rx.text(
-                    """
-                    To build a solid foundation, I enrolled in a MOOC program at the University of Nicosia,
-                    where I am currently completing my certification in blockchain-related studies.
-                    In parallel, I have been self-studying Solidity and Artificial Intelligence.
-                    """
-                ),
-
-                rx.text(
-                    """
-                    My main focus in Web3 is Solidity development, with the goal of becoming a professional
-                    Web3 developer specialized in smart contracts and decentralized applications (DApps).
-                    """
-                ),
-
-                rx.text(
-                    """
-                    In addition to blockchain, I am actively exploring Artificial Intelligence,
-                    particularly its integration into applications and workflows.
-                    """
-                ),
-
-                rx.text(
-                    """
-                    Beyond technology, I bring a strong professional background in finance,
-                    administration, accounting, and financial analysis.
-                    """
-                ),
-
-                rx.text(
-                    """
-                    Today, I am actively seeking opportunities in the Web3 space, where I can combine
-                    my technical skills, financial knowledge, and passion for decentralized technologies.
-                    """
-                ),
-
-                rx.text(
-                    """
-                    Thank you for your time and consideration.
-                    I would welcome the opportunity to further discuss how my background and motivation
-                    can add value to your organization.
-                    """
-                ),
-
-                rx.text(
-                    "Kind regards,",
-                    font_weight="bold",
-                ),
-
-                rx.text(
-                    "Cristian Ortega",
-                    font_weight="bold",
-                ),
-
-            spacing="5",
-            align_items="start",
-            width="100%",
+                width="100%",
+                overflow_x="hidden",
             )
         ),
-)
+        width="100%",
+        max_width="100%",
+        overflow_x="hidden",
+    )
 
 def about() -> rx.Component:
     return rx.vstack(

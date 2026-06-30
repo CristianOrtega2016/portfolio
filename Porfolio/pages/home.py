@@ -175,12 +175,7 @@ def navbar_home() -> rx.Component:
             rx.hstack(
                 rx.hstack(
                     rx.icon(
-                        tag="binoculars", # Muestra un birrete/diploma estilizado
-                        width="3em",               # Tamaño en píxeles
-                        color="white"          # Color adaptable con CSS
-                    ),
-                    rx.icon(
-                        tag="square-user-round", # Muestra un birrete/diploma estilizado
+                        tag="briefcase-business", # Muestra un birrete/diploma estilizado
                         width="3em",               # Tamaño en píxeles
                         color="white"          # Color adaptable con CSS
                     ),
@@ -221,19 +216,21 @@ def home() -> rx.Component:
         rx.box(
             rx.desktop_only(
                 rx.flex(
-                    rx.flex(
+                    rx.box(
                         rx.scroll_area(
                             rx.heading("Presentation", size="5"),
-                            rx.image(src="/profile/profilbild.JPG", width="100px", border_radius= "20%", justify="end",),
+                            rx.image(src="/profile/profilbild.JPG", width="80px", border_radius= "20%"),
                             rx.text(
                                 "Hello, my name is Cristian Ortega! I am a Certified Public Accountant and Auditor from Chile, and some time ago I had the opportunity to work as a Credit Card Analyst at Citibank. In this role, I was responsible for monitoring eight bridge accounts where credits issued to customers due to transaction disputes were recorded. These included duplicate payments, services not received, fraud cases, stolen cards, among others. My responsibility was to ensure that each customer case was resolved within a maximum period of three months, including the corresponding accounting process.",
                                 margin_top="0.5em",
+                                font_size="sm",
                             ),
                         ),
                         background="linear-gradient(45deg, var(--green-9), var(--plum-9))",
-                        width="auto",
-                        max_width="400px",
-                        max_height="400px",
+                        width="25%",
+                        max_width="350px",
+                        min_width="200px",
+                        max_height="450px",
                         height="100%",
                         padding="1em",
                         justify="center",
@@ -247,19 +244,21 @@ def home() -> rx.Component:
                         cards=_cards,
                         labels=_labels,
                         auto_rotate=True,
-                        card_width="900px",
-                        card_height="700px",
+                        card_width="600px",
+                        card_height="500px",
                     ),
-                    rx.flex(
+                    rx.box(
                         rx.text(
                             "In addition, I have studied accounting and programming in Sweden, which allows me to have a modern and comprehensive perspective on business and financial processes. My areas of expertise include accounting and auditing, proficiency in Office tools, and specialized software such as AS400 and WinRunner. I also have programming skills in Java, Spring Data, JavaScript, React, TypeScript, and Python. Currently, I am learning Smart Contracts using Solidity and Artificial Intelligence (AI Agents). My main goal is to continue learning everything related to AI and apply it to accounting, data analys, and software development.",
                             margin_top="0.5em",
+                            font_size="sm",
                         ),
                         background="linear-gradient(45deg, var(--blue-9), var(--plum-9))",
                         width="25%",
+                        max_width="350px",
+                        min_width="200px",
+                        max_height="450px",
                         height="100%",
-                        max_width="400px",
-                        max_height="400px",
                         padding="1em",
                         justify="start",
                         align="start",
@@ -278,32 +277,40 @@ def home() -> rx.Component:
             ),
             flex_grow="1",
             width="100%",
+            padding="0.5em",
         ),
         rx.mobile_and_tablet(
             rx.box(
                 rx.vstack(                    
-                    rx.scroll_area(
+                    rx.box(
                         rx.heading("Presentation", size="5"),
-                        rx.image(src="/profile/profilbild.JPG", width="100px", border_radius= "20%", justify="end",),
+                        rx.image(src="/profile/profilbild.JPG", width="80px", border_radius= "20%"),
                         rx.text(
                             "Hello, my name is Cristian Ortega! I am a Certified Public Accountant and Auditor from Chile, and some time ago I had the opportunity to work as a Credit Card Analyst at Citibank. In this role, I was responsible for monitoring eight bridge accounts where credits issued to customers due to transaction disputes were recorded. These included duplicate payments, services not received, fraud cases, stolen cards, among others. My responsibility was to ensure that each customer case was resolved within a maximum period of three months, including the corresponding accounting process. In addition, I have studied accounting and programming in Sweden, which allows me to have a modern and comprehensive perspective on business and financial processes. My areas of expertise include accounting and auditing, proficiency in Office tools, and specialized software such as AS400 and WinRunner. I also have programming skills in Java, Spring Data, JavaScript, React, TypeScript, and Python. Currently, I am learning Smart Contracts using Solidity and Artificial Intelligence (AI Agents). My main goal is to continue learning everything related to AI and apply it to accounting, data analys, and software development.",
                             margin_top="0.5em",
+                            font_size="sm",
                         ),
+                        background="linear-gradient(45deg, var(--green-9), var(--plum-9))",
+                        width="100%",
+                        padding="0.8em",
+                        border_radius="8px",
                     ),
                     rotating_display(
                         cards=_cards,
                         labels=_labels,
                         auto_rotate=True,
-                        card_width="900px",
-                        card_height="700px",
+                        card_width="500px",
+                        card_height="400px",
                     ),
                     align_items="center",
                     justify="center",
-                    height="100%",
                     width="100%",
+                    height="100%",
                 ),
                 height="100%",
                 width="100%",
+                overflow_y="auto",
+                padding="0.5em",
             ),
         ),
         
