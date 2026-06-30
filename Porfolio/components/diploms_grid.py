@@ -50,7 +50,7 @@ def diploms_grid() -> rx.Component:
 
     return rx.grid(
         *diploms,
-        columns=["3", "2", "1"],
+        columns=rx.breakpoints(initial="1", sm="2", lg="3"),
         flow="row-dense",
         justify="between",
         spacing_x="9",
