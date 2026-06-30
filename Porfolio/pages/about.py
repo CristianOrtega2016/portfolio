@@ -1,6 +1,7 @@
 import reflex as rx
 from Porfolio.components.contact_dialog import contact_dialog, contact_nav_button
 from Porfolio.components.navbar import navbar_icons_item, navbar_icons_menu_item
+from Porfolio.components.footer import footer
 
 def navbar_icons() -> rx.Component:
     return rx.box(
@@ -217,9 +218,15 @@ def body_item() -> rx.Component:
 
 def about() -> rx.Component:
     return rx.vstack(
-                navbar_icons(),
-                body_item(),
-                contact_dialog(),
-                bg=rx.color("iris", 3),
+        navbar_icons(),
+        rx.divider(width="100%"),
+        body_item(),
+        rx.divider(width="100%"),
+        footer(),
+        contact_dialog(),
+        min_height="100vh",
+        width="100%",
+        spacing="3",
+        bg=rx.color("iris", 3),
     )
 

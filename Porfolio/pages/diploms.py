@@ -2,6 +2,7 @@ import reflex as rx
 from Porfolio.components.diploms_grid import diploms_grid
 from Porfolio.components.contact_dialog import contact_dialog, contact_nav_button
 from Porfolio.components.navbar import navbar_icons_item, navbar_icons_menu_item
+from Porfolio.components.footer import footer
 
 
 def navbar_diploms() -> rx.Component:
@@ -73,8 +74,14 @@ def navbar_diploms() -> rx.Component:
         width="100%",
     )
 def diploms() -> rx.Component:
-    return rx.box(
+    return rx.vstack(
         navbar_diploms(),
         diploms_grid(),
+        rx.divider(width="100%"),
+        footer(),
         contact_dialog(),
+        min_height="100vh",
+        width="100%",
+        spacing="3",
+        bg=rx.color("iris", 3),
     )

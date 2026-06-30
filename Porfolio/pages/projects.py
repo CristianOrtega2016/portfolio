@@ -2,6 +2,7 @@ import reflex as rx
 from Porfolio.components.projects_grid import projects_grid
 from Porfolio.components.contact_dialog import contact_dialog, contact_nav_button
 from Porfolio.components.navbar import navbar_icons_item, navbar_icons_menu_item
+from Porfolio.components.footer import footer
 
 
 def navbar_projects() -> rx.Component:
@@ -56,8 +57,14 @@ def navbar_projects() -> rx.Component:
 
 
 def projects() -> rx.Component:
-    return rx.box(
+    return rx.vstack(
         navbar_projects(),
         projects_grid(),
+        rx.divider(width="100%"),
+        footer(),
         contact_dialog(),
+        min_height="100vh",
+        width="100%",
+        spacing="3",
+        bg=rx.color("iris", 3),
     )
