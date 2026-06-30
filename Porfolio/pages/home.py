@@ -248,10 +248,12 @@ def home() -> rx.Component:
                         card_height="500px",
                     ),
                     rx.box(
-                        rx.text(
-                            "In addition, I have studied accounting and programming in Sweden, which allows me to have a modern and comprehensive perspective on business and financial processes. My areas of expertise include accounting and auditing, proficiency in Office tools, and specialized software such as AS400 and WinRunner. I also have programming skills in Java, Spring Data, JavaScript, React, TypeScript, and Python. Currently, I am learning Smart Contracts using Solidity and Artificial Intelligence (AI Agents). My main goal is to continue learning everything related to AI and apply it to accounting, data analys, and software development.",
-                            margin_top="0.5em",
-                            font_size="sm",
+                        rx.scroll_area(
+                            rx.text(
+                                "In addition, I have studied accounting and programming in Sweden, which allows me to have a modern and comprehensive perspective on business and financial processes. My areas of expertise include accounting and auditing, proficiency in Office tools, and specialized software such as AS400 and WinRunner. I also have programming skills in Java, Spring Data, JavaScript, React, TypeScript, and Python. Currently, I am learning Smart Contracts using Solidity and Artificial Intelligence (AI Agents). My main goal is to continue learning everything related to AI and apply it to accounting, data analys, and software development.",
+                                margin_top="0.5em",
+                                font_size="sm",
+                            ),
                         ),
                         background="linear-gradient(45deg, var(--blue-9), var(--plum-9))",
                         width="25%",
@@ -282,7 +284,7 @@ def home() -> rx.Component:
         rx.mobile_and_tablet(
             rx.box(
                 rx.vstack(                    
-                    rx.scroll_area(
+                    rx.box(
                         rx.heading("Presentation", size="5"),
                         rx.image(src="/profile/profilbild.JPG", width="80px", border_radius= "20%"),
                         rx.text(
@@ -292,7 +294,6 @@ def home() -> rx.Component:
                         ),
                         background="linear-gradient(45deg, var(--green-9), var(--plum-9))",
                         width="100%",
-                        max_width="100%",
                         padding="0.8em",
                         border_radius="8px",
                     ),
