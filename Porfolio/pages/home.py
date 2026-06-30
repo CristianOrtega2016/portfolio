@@ -255,10 +255,16 @@ def home() -> rx.Component:
                     ),
                     rx.box(
                         rx.scroll_area(
-                            rx.text(
-                                "In addition, I have studied accounting and programming in Sweden, which allows me to have a modern and comprehensive perspective on business and financial processes. My areas of expertise include accounting and auditing, proficiency in Office tools, and specialized software such as AS400 and WinRunner. I also have programming skills in Java, Spring Data, JavaScript, React, TypeScript, and Python. Currently, I am learning Smart Contracts using Solidity and Artificial Intelligence (AI Agents). My main goal is to continue learning everything related to AI and apply it to accounting, data analys, and software development.",
-                                margin_top="0.5em",
-                                font_size="sm",
+                            rx.flex(
+                                rx.text(
+                                    "In addition, I have studied accounting and programming in Sweden, which allows me to have a modern and comprehensive perspective on business and financial processes. My areas of expertise include accounting and auditing, proficiency in Office tools, and specialized software such as AS400 and WinRunner. I also have programming skills in Java, Spring Data, JavaScript, React, TypeScript, and Python. Currently, I am learning Smart Contracts using Solidity and Artificial Intelligence (AI Agents). My main goal is to continue learning everything related to AI and apply it to accounting, data analys, and software development.",
+                                    margin_top="0.5em",
+                                    font_size="sm",
+                                ),
+                                padding="1em",
+                                justify="start",
+                                align="start",
+                                direction="column",
                             ),
                             max_height="400px",
                             height="100%",
