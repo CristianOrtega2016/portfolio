@@ -282,7 +282,7 @@ def home() -> rx.Component:
         rx.mobile_and_tablet(
             rx.box(
                 rx.vstack(                    
-                    rx.box(
+                    rx.scroll_area(
                         rx.heading("Presentation", size="5"),
                         rx.image(src="/profile/profilbild.JPG", width="80px", border_radius= "20%"),
                         rx.text(
@@ -292,6 +292,7 @@ def home() -> rx.Component:
                         ),
                         background="linear-gradient(45deg, var(--green-9), var(--plum-9))",
                         width="100%",
+                        max_width="100%",
                         padding="0.8em",
                         border_radius="8px",
                     ),
