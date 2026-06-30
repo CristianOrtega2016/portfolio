@@ -8,6 +8,7 @@ from Porfolio.components.rotating_display import rotating_display
 from Porfolio.components.navbar import navbar_icons_item, navbar_icons_menu_item
 from Porfolio.components.contact_dialog import contact_nav_button, contact_dialog
 from Porfolio.states.contact_card_state import ContactCardState
+from Porfolio.components.footer import footer
 
 
 def _cv_card() -> rx.Component:
@@ -217,88 +218,101 @@ def home() -> rx.Component:
         navbar_home(),
         rx.divider(width="100%"),
         # ── Body: rotating display centered ──
-        rx.flex(
-            rx.flex(
-                rx.scroll_area(
-                    rx.heading("Presentation", size="5"),
-                rx.image(src="/profile/profilbild.JPG", width="100px", border_radius= "20%", justify="end",),
-                rx.text(
-                    "Hello, my name is Cristian Ortega! I am a Certified Public Accountant and Auditor from Chile, and some time ago I had the opportunity to work as a Credit Card Analyst at Citibank. In this role, I was responsible for monitoring eight bridge accounts where credits issued to customers due to transaction disputes were recorded. These included duplicate payments, services not received, fraud cases, stolen cards, among others. My responsibility was to ensure that each customer case was resolved within a maximum period of three months, including the corresponding accounting process.",
-                     margin_top="0.5em",
+        rx.box(
+            rx.desktop_only(
+                rx.flex(
+                    rx.flex(
+                        rx.scroll_area(
+                            rx.heading("Presentation", size="5"),
+                            rx.image(src="/profile/profilbild.JPG", width="100px", border_radius= "20%", justify="end",),
+                            rx.text(
+                                "Hello, my name is Cristian Ortega! I am a Certified Public Accountant and Auditor from Chile, and some time ago I had the opportunity to work as a Credit Card Analyst at Citibank. In this role, I was responsible for monitoring eight bridge accounts where credits issued to customers due to transaction disputes were recorded. These included duplicate payments, services not received, fraud cases, stolen cards, among others. My responsibility was to ensure that each customer case was resolved within a maximum period of three months, including the corresponding accounting process.",
+                                margin_top="0.5em",
+                            ),
+                        ),
+                        background="linear-gradient(45deg, var(--green-9), var(--plum-9))",
+                        width="auto",
+                        max_width="400px",
+                        max_height="400px",
+                        height="100%",
+                        padding="1em",
+                        justify="center",
+                        align="center",
+                        direction="column",
+                        border="solid",
+                        border_color="white",
+                        flex_grow="1",
+                    ),
+                    rotating_display(
+                        cards=_cards,
+                        labels=_labels,
+                        auto_rotate=True,
+                        card_width="900px",
+                        card_height="700px",
+                    ),
+                    rx.flex(
+                        rx.text(
+                            "In addition, I have studied accounting and programming in Sweden, which allows me to have a modern and comprehensive perspective on business and financial processes. My areas of expertise include accounting and auditing, proficiency in Office tools, and specialized software such as AS400 and WinRunner. I also have programming skills in Java, Spring Data, JavaScript, React, TypeScript, and Python. Currently, I am learning Smart Contracts using Solidity and Artificial Intelligence (AI Agents). My main goal is to continue learning everything related to AI and apply it to accounting, data analys, and software development.",
+                            margin_top="0.5em",
+                        ),
+                        background="linear-gradient(45deg, var(--blue-9), var(--plum-9))",
+                        width="25%",
+                        height="100%",
+                        max_width="400px",
+                        max_height="400px",
+                        padding="1em",
+                        justify="start",
+                        align="start",
+                        direction="column",
+                        border="solid",
+                        border_color="white",
+                        flex_grow="1",
+                    ),
+                    justify="center",
+                    align="center",
+                    width="100%",
+                    height="100%",
+                    gap="1em",
                 ),
-                background="linear-gradient(45deg, var(--green-9), var(--plum-9))",
-                width="25%",
-                max_width="400px",
-                max_height="400px",
-                height="100%",
-                padding="1em",
-                justify="start",
-                align="start",
-                direction="column",
-                border="solid",
-                border_color="white",
-                flex_grow="1",
-                ),  
-                
+                contact_dialog(),
             ),
-
-            rotating_display(
-                cards=_cards,
-                labels=_labels,
-                auto_rotate=True,
-                card_width="900px",
-                card_height="700px",
-            ),
-            rx.flex(
-                rx.text(
-                    "In addition, I have studied accounting and programming in Sweden, which allows me to have a modern and comprehensive perspective on business and financial processes. My areas of expertise include accounting and auditing, proficiency in Office tools, and specialized software such as AS400 and WinRunner. I also have programming skills in Java, Spring Data, JavaScript, React, TypeScript, and Python. Currently, I am learning Smart Contracts using Solidity and Artificial Intelligence (AI Agents). My main goal is to continue learning everything related to AI and apply it to accounting, data analys, and software development.",
-                     margin_top="0.5em",
-                ),
-                background="linear-gradient(45deg, var(--blue-9), var(--plum-9))",
-                width="25%",
-                height="100%",
-                max_width="400px",
-                max_height="400px",
-                padding="1em",
-                justify="start",
-                align="start",
-                direction="column",
-                border="solid",
-                border_color="white",
-                flex_grow="1",
-            ),
-
-            justify="center",
-            align="center",
-            width="100%",
-            height="100%",
             flex_grow="1",
-            flex_skrink="0",
-            gap="1em",
-            
+            width="100%",
         ),
-        contact_dialog(),
+        rx.mobile_and_tablet(
+            rx.box(
+                rx.vstack(                    
+                    rx.scroll_area(
+                        rx.heading("Presentation", size="5"),
+                        rx.image(src="/profile/profilbild.JPG", width="100px", border_radius= "20%", justify="end",),
+                        rx.text(
+                            "Hello, my name is Cristian Ortega! I am a Certified Public Accountant and Auditor from Chile, and some time ago I had the opportunity to work as a Credit Card Analyst at Citibank. In this role, I was responsible for monitoring eight bridge accounts where credits issued to customers due to transaction disputes were recorded. These included duplicate payments, services not received, fraud cases, stolen cards, among others. My responsibility was to ensure that each customer case was resolved within a maximum period of three months, including the corresponding accounting process. In addition, I have studied accounting and programming in Sweden, which allows me to have a modern and comprehensive perspective on business and financial processes. My areas of expertise include accounting and auditing, proficiency in Office tools, and specialized software such as AS400 and WinRunner. I also have programming skills in Java, Spring Data, JavaScript, React, TypeScript, and Python. Currently, I am learning Smart Contracts using Solidity and Artificial Intelligence (AI Agents). My main goal is to continue learning everything related to AI and apply it to accounting, data analys, and software development.",
+                            margin_top="0.5em",
+                        ),
+                    ),
+                    rotating_display(
+                        cards=_cards,
+                        labels=_labels,
+                        auto_rotate=True,
+                        card_width="900px",
+                        card_height="700px",
+                    ),                  
+                    align_items="center",
+                    justify="center",
+                    height="100%",
+                    width="100%",
+                ),
+                height="100%",
+                width="100%",
+            ),
+        ),
         
         rx.divider(width="100%"),
         # ── Footer ──
-        rx.hstack(
-            rx.text("© 2026 — Cristian Ortega", font_size="sm", color="cyan"),
-            rx.spacer(),
-            rx.link(
-                rx.badge("LinkedIn", size="3", color_scheme="cyan"),
-                href="https://www.linkedin.com/in/cristian-ortega-aab1523b5/", 
-                is_external=True, 
-                #font_size="sm"
-                width="3em"
-            ),
-            width="100%",
-            max_width="1200px",
-            padding="1em",
-            justify="center",
-        ),
+        footer(),
         min_height="100vh",
         width="100%",
-        spacing="0",
+        spacing="3",
         bg=rx.color("iris", 3),
         
     )
