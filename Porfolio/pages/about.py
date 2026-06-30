@@ -219,8 +219,11 @@ def body_item() -> rx.Component:
 def about() -> rx.Component:
     return rx.vstack(
         navbar_icons(),
-        rx.divider(width="100%"),
-        body_item(),
+        rx.box(
+            body_item(),
+            flex_grow="1",
+            width="100%",
+        ),
         rx.divider(width="100%"),
         footer(),
         contact_dialog(),

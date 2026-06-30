@@ -76,7 +76,11 @@ def navbar_diploms() -> rx.Component:
 def diploms() -> rx.Component:
     return rx.vstack(
         navbar_diploms(),
-        diploms_grid(),
+        rx.box(
+            diploms_grid(),
+            flex_grow="1",
+            width="100%",
+        ),
         rx.divider(width="100%"),
         footer(),
         contact_dialog(),

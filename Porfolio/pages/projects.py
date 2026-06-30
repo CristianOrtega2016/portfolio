@@ -59,7 +59,11 @@ def navbar_projects() -> rx.Component:
 def projects() -> rx.Component:
     return rx.vstack(
         navbar_projects(),
-        projects_grid(),
+        rx.box(
+            projects_grid(),
+            flex_grow="1",
+            width="100%",
+        ),
         rx.divider(width="100%"),
         footer(),
         contact_dialog(),
