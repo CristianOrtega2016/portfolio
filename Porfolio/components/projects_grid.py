@@ -3,42 +3,46 @@ import reflex as rx
 def projects_card(name_png: str, source_url: str) -> rx.Component:
     return rx.link(
         rx.card(
-            rx.box(
-                rx.flex(
-                    rx.image(
-                        src=f"/pictures/{name_png}",
-                        width="100%",
-                        height="auto",
-                        max_height="8rem",
-                        object_fit="contain",
-                        border_radius="1rem",
-                    ),
-                    rx.box(
-                        rx.heading(name_png.removesuffix(".png"), size="4"),
-                        rx.text("Click to see it"),
-                    ),
-                    spacing="2",
-                    direction="column",
-                    align="center",
+            rx.flex(
+                rx.image(
+                    src=f"/pictures/{name_png}",
                     width="100%",
+                    max_height="8rem",
+                    height="auto",
+                    object_fit="contain",
+                    border_radius="1rem",
                 ),
+                rx.heading(
+                    name_png.removesuffix(".png"),
+                    size="4",
+                    text_align="center",
+                ),
+                rx.text(
+                    "Click the image to visit the project",
+                    text_align="center",
+                ),
+                direction="column",
+                align="center",
+                justify="center",
+                width="100%",
+                height="100%",
+                spacing="3",
             ),
-            as_child=True,
             width="100%",
-            height=["40vh", "35vh", "30vh"],
+            height="auto",
+            min_height="30vh",
+            padding="1rem",
             border="solid",
             border_color="cyan",
             border_radius="1rem",
             _hover={
-                "background": "linear-gradient(45deg, var(--yellow-1), var(--plum-3))",
-                },
+                "background": "linear-gradient(45deg, var(--yellow-3), var(--plum-6))",
+            },
         ),
         href=source_url,
-        is_external=True,
         text_decoration="none",
-        
+        is_external=True,
     )
-
 def projects_grid() -> rx.Component:
 
     diploms = [
@@ -46,7 +50,7 @@ def projects_grid() -> rx.Component:
         projects_card("github_profile.png", "https://github.com/CristianOrtega2016"),
         projects_card("cyfrin_courses_2.png", "https://updraft.cyfrin.io/courses"),
         projects_card("cyfrin_courses.png", "https://updraft.cyfrin.io/courses"),
-        projects_card("linkedin_profile.png", "linkedin.com/in/cristian-ortega-aab1523b5"),
+        projects_card("linkedin_profile.png", "https://www.linkedin.com/in/cristian-ortega-aab1523b5/"),
         projects_card("lottery_code.png", "https://github.com/CristianOrtega2016/Raffle.git"),
         projects_card("reflex_code.png", "https://github.com/CristianOrtega2016/portfolio.git"),
         projects_card("token_app_frontend.png", "https://github.com/CristianOrtega2016/erc20-platform-token-dapp.git"),

@@ -86,6 +86,6 @@ def diploms() -> rx.Component:
         contact_dialog(),
         min_height="100vh",
         width="100%",
-        spacing="3",
+        spacing="1",
         bg=rx.color("iris", 3),
     )

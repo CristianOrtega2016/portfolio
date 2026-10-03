@@ -4,7 +4,8 @@ from __future__ import annotations
 
 import reflex as rx
 from Porfolio.components.dropdown_menu import dropdown_menu
-from Porfolio.components.rotating_display import rotating_display
+from Porfolio.components.rotating_display import (RotatingDisplayState, 
+                                                  rotating_display,) 
 from Porfolio.components.navbar import navbar_icons_item, navbar_icons_menu_item
 from Porfolio.components.contact_dialog import contact_nav_button, contact_dialog
 from Porfolio.states.contact_card_state import ContactCardState
@@ -75,7 +76,7 @@ def _contact_card() -> rx.Component:
             rx.link("💼 LinkedIn", href="https://linkedin.com", is_external=True),
             rx.link("🐦 Twitter", href="https://twitter.com", is_external=True),
             spacing="3",
-            align="start",
+            align="center",
         ),
         padding="20px",
         height="100%",
@@ -214,6 +215,10 @@ def home() -> rx.Component:
         rx.divider(width="100%"),
         # ── Body: rotating display centered ──
         rx.box(
+            rx.box(
+                on_mount=RotatingDisplayState.run_loop,
+                display="none",
+            ),
             rx.desktop_only(
                 rx.flex(
                     rx.box(
@@ -249,9 +254,9 @@ def home() -> rx.Component:
                     rotating_display(
                         cards=_cards,
                         labels=_labels,
-                        auto_rotate=True,
-                        card_width="600px",
-                        card_height="500px",
+                        auto_rotate=False,
+                        card_width="400px",
+                        card_height="300px",
                     ),
                     rx.box(
                         rx.scroll_area(
@@ -314,9 +319,9 @@ def home() -> rx.Component:
                     rotating_display(
                         cards=_cards,
                         labels=_labels,
-                        auto_rotate=True,
-                        card_width="500px",
-                        card_height="400px",
+                        auto_rotate=False,
+                        card_width="400px",
+                        card_height="300px",
                     ),
                     align_items="center",
                     justify="center",
