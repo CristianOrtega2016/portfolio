@@ -55,10 +55,10 @@ def _experience_card() -> rx.Component:
     return rx.card(
         rx.vstack(
             rx.heading("Experience", size="5"),
-            rx.text("🧑‍💻 5 years in web development"),
-            rx.text("🐍 3 years with Python"),
-            rx.text("⚛️ 2 years with  Reflex"),
-            rx.text("🏗️ 2 years with  React"),
+            rx.text("🧑‍💻 2 years in accounting analist"),
+            rx.text("🐍 2 years with Excel"),
+            rx.text("⚛️ 2 years with  AS400"),
+            rx.text("🏗️ 2 years in account control"),
             spacing="3",
             align="center",
         ),
