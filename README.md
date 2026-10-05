@@ -67,8 +67,7 @@ portfolio/
     │   ├── rotating_display.py   # Carousel component + RotatingDisplayState
     │   ├── projects_grid.py      # Projects grid/cards
     │   ├── diploms_grid.py       # Diplomas grid/cards
-    │   ├── contact_dialog.py     # Contact modal + navbar button
-    │   └── dropdown_menu.py      # Legacy dropdown helper (currently unused)
+    │   └── contact_dialog.py     # Contact modal + navbar button
     ├── pages/
     │   ├── home.py               # "/"     — intro + rotating carousel
     │   ├── cv.py                 # "/cv"   — embedded CV PDF
@@ -77,8 +76,7 @@ portfolio/
     │   ├── diplom_view.py        # "/pdfview/[file_name]"
     │   └── projects.py           # "/projects"
     └── states/
-        ├── contact_card_state.py # ContactCardState
-        └── dropdown_state.py     # DropdownMenuState
+        └── contact_card_state.py # ContactCardState
 ```
 
 ## Run locally

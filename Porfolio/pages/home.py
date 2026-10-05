@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import reflex as rx
-from Porfolio.components.dropdown_menu import dropdown_menu
 from Porfolio.components.rotating_display import (RotatingDisplayState, 
                                                   rotating_display,) 
 from Porfolio.components.navbar import navbar_icons_item, navbar_icons_menu_item
