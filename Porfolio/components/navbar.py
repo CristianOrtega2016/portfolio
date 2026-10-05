@@ -13,6 +13,8 @@ def navbar_icons_menu_item(text: str, icon: str, url: str) -> rx.Component:
         rx.hstack(
             rx.icon(icon, size=16), rx.text(text, size="3", weight="medium")
         ),
-        color="white",
+        # Dark text: these items render both inside the (white) dropdown panel
+        # and on the light iris navbar. White was invisible on the panel.
+        color=rx.color("gray", 12),
         href=url,
     )
