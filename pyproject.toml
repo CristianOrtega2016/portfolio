@@ -1,7 +1,7 @@
 [project]
 name = "porfolio"
 version = "0.1.0"
-description = "Add your description here"
+description = "Personal portfolio and CV web app built with Reflex (Python + React)"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
